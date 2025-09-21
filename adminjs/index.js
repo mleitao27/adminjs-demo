@@ -12,6 +12,7 @@ import User from "./models/user/User.js";
 import user_fields from "./models/user/fields.js";
 import Post from "./models/post/Post.js";
 import post_fields from "./models/post/fields.js";
+import post_actions from "./controllers/posts/actions.js";
 import View from "./models/view/View.js";
 import view_fields from "./models/view/fields.js";
 
@@ -29,7 +30,10 @@ const admin = new AdminJS({
   resources: [
     {
       resource: Post,
-      options: post_fields,
+      options: {
+        ...post_fields,
+        actions: post_actions
+      },
     },
     {
       resource: User,
